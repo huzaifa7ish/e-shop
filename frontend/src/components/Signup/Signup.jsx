@@ -15,16 +15,46 @@ const Singup = () => {
   const [avatar, setAvatar] = useState(null);
 
   const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
     const reader = new FileReader();
-
+  
     reader.onload = () => {
-      if (reader.readyState === 2) {
-        setAvatar(reader.result);
-      }
+      const image = new Image();
+      image.src = reader.result;
+  
+      image.onload = () => {
+        const canvas = document.createElement('canvas');
+        const maxWidth = 200; // Adjust this as needed
+        const maxHeight = 200; // Adjust this as needed
+  
+        let width = image.width;
+        let height = image.height;
+  
+        if (width > maxWidth) {
+          height *= maxWidth / width;
+          width = maxWidth;
+        }
+  
+        if (height > maxHeight) {
+          width *= maxHeight / height;
+          height = maxHeight;
+        }
+  
+        canvas.width = width;
+        canvas.height = height;
+  
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(image, 0, 0, width, height);
+  
+        const resizedDataURL = canvas.toDataURL(file.type);
+  
+        setAvatar(resizedDataURL);
+      };
     };
-
-    reader.readAsDataURL(e.target.files[0]);
+  
+    reader.readAsDataURL(file);
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +69,7 @@ const Singup = () => {
         setAvatar();
       })
       .catch((error) => {
+      
         toast.error(error.response.data.message);
       });
   };

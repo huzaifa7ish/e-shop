@@ -28,14 +28,13 @@ router.post("/create-user", async (req, res, next) => {
       email: email,
       password: password,
       avatar: {
-        public_id: myCloud.public_id,
-        url: myCloud.secure_url,
+     
       },
     };
 
     const activationToken = createActivationToken(user);
 
-    const activationUrl = `https://eshop-tutorial-pyri.vercel.app/activation/${activationToken}`;
+    const activationUrl = `http://localhost:3000/activation/${activationToken}`;
 
     try {
       await sendMail({
