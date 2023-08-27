@@ -55,11 +55,11 @@ const Header = ({ activeHeading }) => {
     <>
       <div className={`${styles.section}`}>
         <div className="hidden 800px:h-[50px] 800px:my-[20px] 800px:flex items-center justify-between">
-         <div>
-  <Link to="/">
-    <h1 className="text-orange-500 text-2xl font-bold">Cartz</h1>
-  </Link>
-</div>
+          <div>
+            <Link to="/">
+              <h1 className="text-orange-500 text-2xl font-bold">Cartz</h1>
+            </Link>
+          </div>
           {/* search box */}
           <div className="w-[50%] relative">
             <input
@@ -146,7 +146,7 @@ const Header = ({ activeHeading }) => {
                 onClick={() => setOpenWishlist(true)}
               >
                 <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
-                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                <span className="absolute right-0 top-0 rounded-full bg-[#000000] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                   {wishlist && wishlist.length}
                 </span>
               </div>
@@ -161,7 +161,7 @@ const Header = ({ activeHeading }) => {
                   size={30}
                   color="rgb(255 255 255 / 83%)"
                 />
-                <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
+                <span className="absolute right-0 top-0 rounded-full bg-[#000000] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                   {cart && cart.length}
                 </span>
               </div>
