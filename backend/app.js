@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-  origin: 'http://',
+  origin: 'https://e-shop-livid-ten.vercel.app/',
   methods : ["POST" , "GET"]
   credentials: true
 }));
